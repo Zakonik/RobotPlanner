@@ -24,6 +24,7 @@
         android:layout_marginTop="272dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="36dp"
+        android:text="UP"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="278dp"
+        android:text="DOWN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +54,7 @@
         android:layout_marginTop="219dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="342dp"
+        android:text="LEFT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,13 +62,14 @@
         tools:text="LEFT" />
 
     <Button
-        android:id="@+id/righytButton"
+        android:id="@+id/rightButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="341dp"
         android:layout_marginEnd="51dp"
         android:layout_marginBottom="343dp"
+        android:text="RIGHT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -80,6 +84,7 @@
         android:layout_marginTop="74dp"
         android:layout_marginEnd="271dp"
         android:layout_marginBottom="8dp"
+        android:text="CONNECT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -87,5 +92,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.003"
         tools:text="CONNECT" />
+
+    <Button
+        android:id="@+id/calendarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="244dp"
+        android:text="CALENDAR"
+        app:layout_constraintBottom_toTopOf="@+id/rightButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/connectButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="CALENDAR" />
 
 </android.support.constraint.ConstraintLayout>
