@@ -17,68 +17,11 @@ public class MainActivity extends AppCompatActivity {
     TcpClient mTcpClient;
 
     AtomicBoolean pressedUp = new AtomicBoolean(false);
-
-    Thread pressingUp = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            while (true) {
-                while (pressedUp.get() && !pressedDown.get() && !pressedLeft.get() && !pressedRight.get()) {
-                    if (mTcpClient != null) {
-                        mTcpClient.sendMessage("u");
-                    }
-                    SystemClock.sleep(100);
-                }
-            }
-        }
-    });
-
     AtomicBoolean pressedDown = new AtomicBoolean(false);
-
-    Thread pressingDown = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            while (true) {
-                while (pressedDown.get() && !pressedUp.get() && !pressedLeft.get() && !pressedRight.get()) {
-                    if (mTcpClient != null) {
-                        mTcpClient.sendMessage("d");
-                    }
-                    SystemClock.sleep(100);
-                }
-            }
-        }
-    });
-
     AtomicBoolean pressedLeft = new AtomicBoolean(false);
-
-    Thread pressingLeft = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            while (true) {
-                while (pressedLeft.get() && !pressedRight.get() && !pressedUp.get() && !pressedDown.get()) {
-                    if (mTcpClient != null) {
-                        mTcpClient.sendMessage("l");
-                    }
-                    SystemClock.sleep(100);
-                }
-            }
-        }
-    });
-
     AtomicBoolean pressedRight = new AtomicBoolean(false);
 
-    Thread pressingRight = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            while (true) {
-                while (pressedRight.get() && !pressedLeft.get() && !pressedUp.get() && !pressedDown.get()) {
-                    if (mTcpClient != null) {
-                        mTcpClient.sendMessage("r");
-                    }
-                    SystemClock.sleep(100);
-                }
-            }
-        }
-    });
+
 
 
     public class ConnectTask extends AsyncTask<String, String, TcpClient> {
@@ -122,10 +65,6 @@ public class MainActivity extends AppCompatActivity {
         final Button buttonLeft = findViewById(R.id.leftButton);
         final Button buttonCalendar = findViewById(R.id.calendarButton);
         final Button buttonConnect = findViewById(R.id.connectButton);
-        pressingUp.start();
-        pressingDown.start();
-        pressingRight.start();
-        pressingLeft.start();
 
         buttonUp.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -133,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         pressedUp.set(true);
+                        if (mTcpClient != null && !pressedLeft.get() && !pressedDown.get() && !pressedRight.get()) {
+                            mTcpClient.sendMessage("u");
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
@@ -151,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         pressedDown.set(true);
+                        if (mTcpClient != null && !pressedLeft.get() && !pressedUp.get() && !pressedRight.get()) {
+                            mTcpClient.sendMessage("d");
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
@@ -169,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         pressedLeft.set(true);
+                        if (mTcpClient != null && !pressedUp.get() && !pressedDown.get() && !pressedRight.get()) {
+                            mTcpClient.sendMessage("l");
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
@@ -187,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         pressedRight.set(true);
+                        if (mTcpClient != null && !pressedLeft.get() && !pressedDown.get() && !pressedUp.get()) {
+                            mTcpClient.sendMessage("r");
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
