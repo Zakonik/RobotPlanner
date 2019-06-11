@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         final Button buttonLeft = findViewById(R.id.leftButton);
         final Button buttonCalendar = findViewById(R.id.calendarButton);
         final Button buttonConnect = findViewById(R.id.connectButton);
+        final Button buttonShowList = findViewById(R.id.showListButton);
         pressingUp.start();
         pressingDown.start();
         pressingRight.start();
@@ -199,6 +200,15 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        buttonShowList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ViewListContents.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         buttonCalendar.setOnClickListener(new View.OnClickListener() {

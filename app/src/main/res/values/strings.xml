@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RobotPlanner</string>
+    <string name="addItemButton">Add new registry</string>
 </resources>

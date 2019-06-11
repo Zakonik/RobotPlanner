@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddItem"/>
+        <activity android:name=".ListDataActivity"></activity>
+        <activity android:name=".EditDataActivity"></activity>
+        <activity android:name=".AddDataActivity"></activity>
+        <activity android:name=".ViewListContents"></activity>
     </application>
 
 </manifest>
